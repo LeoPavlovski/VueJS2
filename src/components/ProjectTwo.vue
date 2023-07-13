@@ -1,56 +1,37 @@
 <template>
-<section>
-  <h2>Your name {{this.name}}</h2>
-<p v-for="name in names" :key="name">
-    {{name}}
-</p>
-<p>Your age {{this.age}}</p>
-<p>Your Age in 5 years {{this.age+5}}</p>
-<p>Favorite Number : {{this.findFavoriteNumber()}} With a function</p>
-<p>Favorite Number  : {{this.randomNumber}} With a data object.</p>
-<!--  Rendering the image with the v-bind-->
-<div>
-  <img><a v-bind:href="this.randomImage">Random Image</a>
-</div>
-<input type="text" v-model="userInput">
-  <input type="text" v-bind:value="name">
-  <btn @click="AddName()">Add Name</btn>
-</section>
+  <div>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button @click="addBtn()">Add</button>
+      <button @click="removeBtn()">Remove</button>
+      <p>Result:{{counter}}</p>
+    </section>
+  </div>
 </template>
 
 <script>
-  export default {
-  data() {
-    return {
-      age: 21,
-      name: "Leo",
-      LowNumber: "You got a low number!",
-      highNumber: "You got a high number",
-      randomImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
-      randomNumber: Math.random(),
-      userInput: "",
-      inputName:'',
-      names:[],
-    };
+export default{
+  data(){
+    return{
+      counter:0,
+      add:0,
+      remove:0,
+    }
   },
-  methods: {
-    findFavoriteNumber() {
-      const number = Math.random();
-      console.log(number);
-      if (number < 0.5) {
-        return this.LowNumber;
-      }
-      return this.highNumber;
+  methods:{
+    addBtn(){
+      this.counter = this.counter+1;
     },
-    AddName(){
-      let addingName = this.names.push(this.userInput);
-      this.userInput="";
-      return addingName;
-    },
-  },
-};
+    removeBtn(){
+    this.counter = this.counter-1;
+    }
+  }
+}
+
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 * {
   box-sizing: border-box;
