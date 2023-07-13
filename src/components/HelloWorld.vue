@@ -17,6 +17,8 @@
       <!--      This is called VUE interpolation-->
       <!--      The mustaches :D -->
       <p>{{testGoal}}</p>
+<!--      Calculate the Goal-->
+      <p>{{this.OutputGoal()}}</p>
       <!--      This v-bind most of the time we are going to use if we want to link something.-->
       <p>Testing the link<a v-bind:href="GoogleLink">Google.com</a></p>
 
@@ -31,6 +33,8 @@ export default{
       goals:[],
       userInput:[],
       myCourseGoals:['Finish Course','Get money.'],
+      myGoalA:'Build The safebankapp',
+      myGoalB:'Build The vitalhealthapp',
       testGoal:'leo123',
       GoogleLink:'https://www.facebook.com',
     }
@@ -40,6 +44,15 @@ export default{
     let addingGoals = this.goals.push(this.userInput);
       this.userInput="";
     return addingGoals;
+      },
+    OutputGoal(){
+     const randomGoal = Math.random();
+     if(randomGoal<0.5){
+       return this.myGoalA
+     }
+     else{
+       return this.myGoalB
+     }
     }
   }
 }
