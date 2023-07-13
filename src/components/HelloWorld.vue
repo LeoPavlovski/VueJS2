@@ -13,6 +13,7 @@
   <img><a v-bind:href="this.randomImage">Random Image</a>
 </div>
 <input type="text" v-model="userInput">
+  <input type="text" v-bind:value="name">
   <btn @click="AddName()">Add Name</btn>
 </section>
 </template>
