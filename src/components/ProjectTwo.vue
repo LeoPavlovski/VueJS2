@@ -6,8 +6,16 @@
     <section id="events">
       <h2>Events in Action</h2>
       <button @click="addBtn()">Add</button>
+      <button @click="updateName()">Update Name!</button>
       <button @click="removeBtn()">Remove</button>
+      <input type="text" v-on:input="setName($event, 'pavlovski')">
+<!--      <input type="text" v-on:input="addYears">-->
       <p>Result:{{counter}}</p>
+<!--      <p v-for="name in nameInputs" :key="name">Your name is :{{ name }}</p>-->
+      <p >Your name is :{{name}}</p>
+<!--      <p>Your years :{{years}}</p>-->
+
+
     </section>
   </div>
 </template>
@@ -19,6 +27,9 @@ export default{
       counter:0,
       add:0,
       remove:0,
+      name:'',
+      nameInputs:[],
+      years:'',
     }
   },
   methods:{
@@ -27,8 +38,17 @@ export default{
     },
     removeBtn(){
     this.counter = this.counter-1;
+    },
+    updateName() {
+        this.nameInputs.push(this.name);
+        // i can clear the input like that too.
+        this.name = '';
+    },
+    setName(event , lastName){
+      this.name = event.target.value + ' ' + lastName
     }
   }
+
 }
 
 </script>
