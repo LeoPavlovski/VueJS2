@@ -34,7 +34,7 @@
         <label>When u press enter.</label>
       </div>
       <div>
-        <input type="text" v-on:keydown.enter="createText2($event, lastName)">
+        <input type="text" v-on:keydown.enter="createText2($event, lastName)" v-on:keydown="createText">
         <!--      v-on:keydown.enter="createText2($event, this.lastName)" -->
         <p>OUTPUT : {{textOutput2}}</p>
       </div>
