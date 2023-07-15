@@ -1,21 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-<!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-<!--    <ProjectTwo></ProjectTwo>-->
-    <ProjectThree></ProjectThree>
+<AssignmentTwo></AssignmentTwo>
   </div>
 </template>
 
 <script>
-// import ProjectTwo from './components/ProjectTwo.vue'
-import ProjectThree from './components/ProjectThree.vue'
+import AssignmentTwo from "@/components/Assignments/AssignmentTwo.vue";
 
 export default {
   name: 'App',
   components: {
-    // ProjectTwo,
-    ProjectThree
+    AssignmentTwo,
   }
 }
 </script>
