@@ -24,8 +24,9 @@
         <label style="margin-bottom:20px; margin-top:20px;">Instantly rendering</label>
       </div>
       <div>
-        <input type="text" v-on:input="createText">
+        <input type="text" v-on:input="createText" v-model="textOutput">
         <p>Output : {{textOutput}}</p>
+        <button v-on:click="resetInput">Reset input</button>
       </div>
 
       <hr>
@@ -44,7 +45,7 @@
         <label>When u press space.</label>
       </div>
       <div>
-        <input type="text" v-on:keydown.space="createText3($event, lastName, years)">
+        <input type="text" v-on:keydown.space="createText3($event)">
 <!--              v-on:keydown.enter="createText2($event, this.lastName)" -->
         <p>OUTPUT : {{textOutput3}}</p>
       </div>
@@ -55,8 +56,9 @@
           <label>Enter your profession</label>
         </div>
         <div>
-          <input type="text" style="border:1px solid black;padding:10px;" v-on:keydown.enter="createProfession">
-          <p>Your profession is :  {{profession}}</p>
+          <input type="text" style="border:1px solid black;padding:10px;" v-model="profession">
+          <p>Your profession is :  {{fullName}}</p>
+          <button v-on:click="resetInput2()">Reset Btn</button>
         </div>
       </form>
     </section>
@@ -86,19 +88,41 @@ data(){
     createText2(event , lastName){
       this.textOutput2= event.target.value+  ' ' + lastName
     },
-    createText3(event, lastName, years){
-      this.textOutput3= event.target.value + ' ' + lastName +  ' ' + years
+    createText3(event){
+      this.textOutput3= event.target.value
     },
-    createProfession(event){
+    OuputFullProfession(){
+      console.log('Running Again...')
+      if(this.profession===''){
+        return ''
+      }
     //   We can do this. event.preventDefault() or with the modifiers
-      this.profession = event.target.value;
+    return this.profession + ' ' + 'Fleece Johnson';
     },
-    countUP(){
+
+countUP(){
       this.counter++;
     },
     countDOWN(){
       this.counter--;
+    },
+    resetInput(){
+      this.textOutput='';
+    },
+    resetInput2(){
+      this.profession="";
     }
+  },
+  // Honestly we can even do this with methods, but we are accesing the variable here. first checks the data, and then goes to the computed.
+  computed:{
+    fullName(){
+      console.log('running again.')
+      if(this.profession===''){
+        return ''
+      }
+      //   We can do this. event.preventDefault() or with the modifiers
+      return this.profession + ' ' + 'Fleece Johnson';
+    },
   }
 }
 
