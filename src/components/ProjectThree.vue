@@ -1,5 +1,6 @@
 <template>
   <div>
+<!--    Getting the initial starting value from the counter.-->
     <header>
       <h1>Vue Events</h1>
     </header>
@@ -10,6 +11,7 @@
       <button @click.right="removeBtn()">Remove</button>
       <input type="text" v-on:input="setName($event, 'pavlovski')" v-on:keyup.enter="setNewName">
 <!--      <input type="text" v-on:input="addYears">-->
+      <p v-once >Starting Counter : {{counter}}</p>
       <p>Result:{{counter}}</p>
 <!--      <p v-for="name in nameInputs" :key="name">Your name is :{{ name }}</p>-->
       <p >Your name is :{{confirmedName}}</p>
