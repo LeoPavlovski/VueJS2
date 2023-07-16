@@ -51,6 +51,8 @@
       </div>
 
 <!--Preventing the default here when the submission occurs.-->
+
+<!--      Making this for a contact input.-->
       <form v-on:submit.prevent>
         <div style="margin-bottom:20px;">
           <label>Enter your profession</label>
@@ -61,6 +63,19 @@
           <button v-on:click="resetInput2()">Reset Btn</button>
         </div>
       </form>
+      <div style="margin-top:50px;">
+        <label>Testing Watchers</label>
+        <div>
+          <input type="text" style="border:1px solid black;padding:20px;" v-model="pokemonName">
+          <input type="text" style="border:1px solid black;padding:20px;" v-model="pokemonLastName">
+
+        </div>
+        <div>
+          <p>Your pokemon is :{{pokemonFullName}}</p>
+          <button v-on:click="resetPokemon">Reset pokemon</button>
+        </div>
+      </div>
+
     </section>
   </div>
 </template>
@@ -76,8 +91,59 @@ data(){
     years:21,
     profession:'',
     counter:0,
+    fullName:'',
+    // Associated with the pokemon.
+    pokemonName:'',
+    pokemonLastName:'',
   }
 },
+  computed:{
+    pokemonFullName(){
+      console.log('running again.')
+      if(this.pokemonName==='' || this.pokemonLastName === ''){
+        return ''
+      }
+      //   We can do this. event.preventDefault() or with the modifiers
+      return this.pokemonName + " "+  this.pokemonLastName
+    },
+  },
+  // watch:{
+  //Automatically we are passing the value here in the function. Vue does this for us.
+    //Modify a dependency.
+   //  pokemon(value){
+   //   if(value===''){
+   //     this.pokemonFullName=''
+   //   }
+   //   else{
+   //     this.pokemonFullName= value + ' ' + 'Pikachu.'
+   //   }
+   // }
+  // pokemonName(value){
+  //   if(value===''){
+  //   this.pokemonFullName='';
+  //   }
+  //   else{
+  //     this.pokemonFullName= value + ' ' + this.pokemonLastName;
+  //   }
+  // },
+  // pokemonLastName(value){
+  //   if(value===''){
+  //     this.pokemonFullName='';
+  //   }
+  //   else{
+  //     this.pokemonFullName= this.pokemonName + ' ' + value;
+  //   }
+  // }
+  //
+  // },
+  watch:{
+  //latest value
+    counter(value){
+      if(value>10){
+        this.counter=0;
+      }
+    }
+  },
   methods:{
     showAlert(){
       alert('The Button has been pressed.!')
@@ -111,19 +177,13 @@ countUP(){
     },
     resetInput2(){
       this.profession="";
+    },
+    resetPokemon(){
+      this.pokemonName='';
+      this.pokemonLastName='';
     }
   },
   // Honestly we can even do this with methods, but we are accesing the variable here. first checks the data, and then goes to the computed.
-  computed:{
-    fullName(){
-      console.log('running again.')
-      if(this.profession===''){
-        return ''
-      }
-      //   We can do this. event.preventDefault() or with the modifiers
-      return this.profession + ' ' + 'Fleece Johnson';
-    },
-  }
 }
 
 </script>
