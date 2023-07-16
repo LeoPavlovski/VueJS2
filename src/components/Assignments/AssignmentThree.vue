@@ -20,7 +20,6 @@ export default{
   data(){
     return{
       counter:0,
-      counterStatus:0,
     }
   },
   // Using methods to prove why we shouldn't use methods for this kind of a thing.
@@ -32,24 +31,33 @@ export default{
       this.counter+=5
     },
   },
-
+  // Ok so we can't have hte data in the data when we arre using the computed props
+  //Watcher for the whole thing. which  is  good.
+  //improvement.
+  computed:{
+    counterStatus(){
+        if(this.counter>37){
+          return 'too high';
+        }
+        if(this.counter===37){
+          return 37;
+        }
+        if(this.counter===0){
+          return 0;
+        }
+        else{
+          return 'too low';
+      }
+    }
+  },
   watch :{
-    counter(value){
-     console.log('running again...');
-     if(value>37){
-     this.counterStatus ='Too high'
+    counterStatus(){
+      console.log("watcher running...");
+      const that = this;
       setTimeout(()=>{
-        this.counterStatus='0'
-      },4000,)
-     }
-     if(value<37){
-     this.counterStatus='Too low'
-       setTimeout(()=>{
-         console.log('Value has been changed');
-         this.counterStatus='0'
-       },4000)
-     }
-    },
+        that.counter=0;
+      },4000)
+    }
   }
 }
 
