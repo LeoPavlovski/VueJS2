@@ -1,20 +1,24 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-<AssignmentThree></AssignmentThree>
+<!--<AssignmentThree></AssignmentThree>-->
+    <ProjectFour></ProjectFour>
+
   </div>
 </template>
 
 <script>
 // import AssignmentTwo from "@/components/Assignments/AssignmentTwo.vue";
-import AssignmentThree from "@/components/Assignments/AssignmentThree.vue";
+// import AssignmentThree from "@/components/Assignments/AssignmentThree.vue";
+import ProjectFour from "@/components/ProjectFour.vue"
 
 
 export default {
   name: 'App',
   components: {
     // AssignmentTwo,
-    AssignmentThree,
+    // AssignmentThree,
+    ProjectFour
   }
 }
 </script>
