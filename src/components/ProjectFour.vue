@@ -9,9 +9,9 @@
 <!--      Really important that we are sending active, demo too. becuase the demo is actually the box -->
 <!--      Still hard to read.-->
 
-      <div class="demo" :class="{secondary:boxSelectedA}" @click="boxSelected('A')"></div>
-      <div class="demo" :class="{ active:boxSelectedB}" @click="boxSelected('B')"></div>
-      <div class="demo" :class="{ inactive:boxSelectedC}" @click="boxSelected('C')"></div>
+      <div class="demo" :class="boxA" @click="boxSelected('A')"></div>
+      <div class="demo" :class="boxB" @click="boxSelected('B')"></div>
+      <div class="demo" :class="boxC" @click="boxSelected('C')"></div>
     </section>
     <section id="styling">
       <div class="text" :style="{color:textSelected1 ? 'red':  'blue'}" @click="textSelected(1)">test1</div>
@@ -35,6 +35,17 @@ export default{
         textSelected3:false,
       }
     },
+  computed:{
+    boxA(){
+      return {secondary:this.boxSelectedA}
+    },
+    boxB(){
+      return {active:this.boxSelectedB}
+    },
+    boxC(){
+      return {inactive:this.boxSelectedC}
+    }
+  },
   methods:{
     boxSelected(box){
       if(box==='A'){
