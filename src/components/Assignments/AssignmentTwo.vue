@@ -7,13 +7,13 @@
     <section id="assignment">
       <h2>Event Practice</h2>
       <!-- 1) Show an alert (any text of your choice) when the button is pressed -->
-      <button v-on:click="showAlert()">Show Alert</button>
+      <button @click="showAlert()">Show Alert</button>
       <hr>
       <!-- 2) Register the user input on "keydown" and output it in the paragraph (hint: event.target.value helps) -->
 
 <!--      Counter Btn-->
-      <button v-on:click="countUP()">Count UP</button>
-      <button v-on:click="countDOWN()">COUNT DOWN</button>
+      <button @click="countUP()">Count UP</button>
+      <button @click="countDOWN()">COUNT DOWN</button>
 <!--      Starting counter.-->
       <h3 v-once>Started Counter : {{counter}}</h3>
 
