@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-<AssignmentTwo></AssignmentTwo>
+<AssignmentThree></AssignmentThree>
   </div>
 </template>
 
 <script>
-import AssignmentTwo from "@/components/Assignments/AssignmentTwo.vue";
+// import AssignmentTwo from "@/components/Assignments/AssignmentTwo.vue";
+import AssignmentThree from "@/components/Assignments/AssignmentThree.vue";
+
 
 export default {
   name: 'App',
   components: {
-    AssignmentTwo,
+    // AssignmentTwo,
+    AssignmentThree,
   }
 }
 </script>
