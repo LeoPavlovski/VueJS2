@@ -23,6 +23,7 @@ export default{
       counterStatus:0,
     }
   },
+  // Using methods to prove why we shouldn't use methods for this kind of a thing.
   methods:{
     AddCounter(){
       this.counter++
@@ -31,9 +32,10 @@ export default{
       this.counter+=5
     },
   },
+
   watch :{
     counter(value){
-      console.log(value);
+     console.log('running again...');
      if(value>37){
      this.counterStatus ='Too high'
       setTimeout(()=>{
