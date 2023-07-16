@@ -9,9 +9,9 @@
 <!--      Really important that we are sending active, demo too. becuase the demo is actually the box -->
 <!--      Still hard to read.-->
 
-      <div :class="boxSelectedA ? 'secondary demo': 'demo'" @click="boxSelected('A')"></div>
-      <div :class="{demo:true, active:boxSelectedB}" @click="boxSelected('B')"></div>
-      <div :class="{demo:true, inactive:boxSelectedC}" @click="boxSelected('C')"></div>
+      <div class="demo" :class="{secondary:boxSelectedA}" @click="boxSelected('A')"></div>
+      <div class="demo" :class="{ active:boxSelectedB}" @click="boxSelected('B')"></div>
+      <div class="demo" :class="{ inactive:boxSelectedC}" @click="boxSelected('C')"></div>
     </section>
     <section id="styling">
       <div class="text" :style="{color:textSelected1 ? 'red':  'blue'}" @click="textSelected(1)">test1</div>
