@@ -9,9 +9,9 @@
 <!--      Really important that we are sending active, demo too. becuase the demo is actually the box -->
 <!--      Still hard to read.-->
 
-      <div :class="boxSelectedA ? 'active demo': 'demo'" @click="boxSelected('A')"></div>
-      <div class="demo" :style="{backgroundColor:boxSelectedB ? 'red':'white'}" @click="boxSelected('B')"></div>
-      <div class="demo" @click="boxSelected('C')"></div>
+      <div :class="boxSelectedA ? 'secondary demo': 'demo'" @click="boxSelected('A')"></div>
+      <div :class="{demo:true, active:boxSelectedB}" @click="boxSelected('B')"></div>
+      <div :class="{demo:true, inactive:boxSelectedC}" @click="boxSelected('C')"></div>
     </section>
     <section id="styling">
       <div class="text" :style="{color:textSelected1 ? 'red':  'blue'}" @click="textSelected(1)">test1</div>
@@ -76,6 +76,14 @@ html {
 .active{
   border-color:red;
   background-color:crimson;
+}
+.inactive{
+  border-color:blue;
+  background-color:steelblue;
+}
+.secondary{
+  border-color:yellow;
+  background-color:lime;
 }
 
 body {
