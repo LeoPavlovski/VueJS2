@@ -38,13 +38,13 @@ export default{
   methods:{
     boxSelected(box){
       if(box==='A'){
-        this.boxSelectedA=true;
+        this.boxSelectedA=!this.boxSelectedA;
       }
       else if(box==='B'){
-        this.boxSelectedB=true;
+        this.boxSelectedB=!this.boxSelectedB;
       }
       else if(box==='C'){
-        this.boxSelectedC=true;
+        this.boxSelectedC=!this.boxSelectedC;
       }
     },
     textSelected(text){
