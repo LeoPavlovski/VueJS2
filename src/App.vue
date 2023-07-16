@@ -2,7 +2,8 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
 <!--<AssignmentThree></AssignmentThree>-->
-    <ProjectFour></ProjectFour>
+<!--    <ProjectFour></ProjectFour>-->
+    <assignment-four></assignment-four>
 
   </div>
 </template>
@@ -10,7 +11,8 @@
 <script>
 // import AssignmentTwo from "@/components/Assignments/AssignmentTwo.vue";
 // import AssignmentThree from "@/components/Assignments/AssignmentThree.vue";
-import ProjectFour from "@/components/ProjectFour.vue"
+// import ProjectFour from "@/components/ProjectFour.vue"
+import AssignmentFour from "@/components/Assignments/AssignmentFour.vue"
 
 
 export default {
@@ -18,7 +20,8 @@ export default {
   components: {
     // AssignmentTwo,
     // AssignmentThree,
-    ProjectFour
+    // ProjectFour
+    AssignmentFour
   }
 }
 </script>
