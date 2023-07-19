@@ -5,7 +5,8 @@
 <!--    <ProjectFour></ProjectFour>-->
 <!--    <assignment-four></assignment-four>-->
 
-    <assignment-five></assignment-five>
+<!--    <assignment-five></assignment-five>-->
+    <assignment-six></assignment-six>
   </div>
 </template>
 
@@ -14,8 +15,8 @@
 // import AssignmentThree from "@/components/Assignments/AssignmentThree.vue";
 // import ProjectFour from "@/components/ProjectFour.vue"
 // import AssignmentFour from "@/components/Assignments/AssignmentFour.vue"
-import AssignmentFive from "@/components/Assignments/AssignmentFive.vue"
-
+// import AssignmentFive from "@/components/Assignments/AssignmentFive.vue"
+import AssignmentSix from "@/components/Assignments/AssignmentSix.vue"
 
 export default {
   name: 'App',
@@ -24,7 +25,8 @@ export default {
     // AssignmentThree,
     // ProjectFour
     // AssignmentFour
-    AssignmentFive
+    // AssignmentFive
+    AssignmentSix
   }
 }
 </script>
