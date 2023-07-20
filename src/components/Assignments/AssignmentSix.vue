@@ -14,6 +14,7 @@
 
           <ul>
             <li>{{goal}}</li>
+            <input type="text">
             <button @click="deleteGoal(index)">Delete Goal</button>
           </ul>
 
