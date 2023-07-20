@@ -21,7 +21,7 @@
 
     <!-- 3) When the below button is pressed, the list should be shown or hidden -->
     <!-- BONUS: Also update the button caption -->
-    <button @click="showHide">Hide / Show List</button>
+    <button @click="showHide">{{this.showList? 'Hide' : 'Show'}}</button>
   </section>
 </div>
 </template>
