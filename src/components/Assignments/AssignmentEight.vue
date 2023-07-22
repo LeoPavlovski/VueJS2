@@ -24,18 +24,23 @@
 
       <section id="controls">
         <button v-on:click="humanAttacking()">ATTACK</button>
-        <button v-on:click="speicalAttack()">SPECIAL ATTACK</button>
+        <button v-on:click="specialAttack()">SPECIAL ATTACK</button>
         <button v-on:click="playerHealing()">HEAL</button>
         <button v-on:click="surrender()">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <div>
-          <ul>
-
-          </ul>
+        <div v-for="monsterAttack in monsterAttacks" v-bind:key="monsterAttack">
+          <div v-for="playerAttack in playerAttacks" v-bind:key="playerAttack">
+            <div v-for="specialAttack in specialAttacks" v-bind:key="specialAttack">
+              <ul>
+                <li>Monster Attacks for : {{monsterAttack}} Hits!</li>
+                <li>Player Attacks for : {{playerAttack}} Hits!</li>
+                <li>Special Attacks for : <span style="color:red;">{{specialAttack}}</span> Hits!</li>
+              </ul>
+            </div>
         </div>
-
+        </div>
       </section>
     </div>
   </div>
@@ -46,10 +51,12 @@
   export default{
     data(){
       return{
-        specialAttack:[],
+        specialAttacks:[],
+        monsterAttacks:[],
+        playerAttacks:[],
         monsterHealth:100,
         playerHealth:100,
-
+        usesSpecialAttack:false,
       }
     },
     methods:{
@@ -57,28 +64,38 @@
       let AttackValue =  Math.floor(Math.random() * (12-5)) + 5;
         console.log('Human Attacks For : ', AttackValue)
       this.monsterHealth = this.monsterHealth- AttackValue;
+        this.playerAttacks.push(AttackValue);
       this.monsterAttacking();
       },
-      speicalAttack(){
+      specialAttack(){
+        this.usesSpecialAttack=true;
         let specialAttack = Math.floor(Math.random() * (20-10) + 10);
         console.log('Human Attacks For : ', specialAttack)
+       this.specialAttacks.push(specialAttack);
         this.monsterHealth = this.monsterHealth- specialAttack;
         this.monsterAttacking();
       },
       monsterAttacking(){
         let AttackValue = Math.floor(Math.random()* (15-8) + 5);
         console.log('Monster Attacks for : ', AttackValue)
+        this.monsterAttacks.push(AttackValue);
         this.playerHealth = this.playerHealth- AttackValue;
       },
       playerHealing(){
         let Healing = Math.floor(Math.random() * (20 -10) + 5);
         this.playerHealth +=Healing;
+        if(this.playerHealth>=100){
+          this.playerHealth=100;
+        }
         console.log('Player healed for  : ' , Healing);
         this.monsterHealing()
       },
       monsterHealing(){
         let monsterHealing = Math.floor(Math.random() * (30-15) + 5);
         this.monsterHealth += monsterHealing;
+        if(this.monsterHealth >=100){
+          this.monsterHealth=100;
+        }
         console.log('Monster healed for : ', monsterHealing);
       },
       surrender(){
