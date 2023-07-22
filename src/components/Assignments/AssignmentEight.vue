@@ -26,7 +26,7 @@
         <button v-on:click="humanAttacking()">ATTACK</button>
         <button v-on:click="speicalAttack()">SPECIAL ATTACK</button>
         <button v-on:click="playerHealing()">HEAL</button>
-        <button>SURRENDER</button>
+        <button v-on:click="surrender()">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
@@ -80,6 +80,10 @@
         let monsterHealing = Math.floor(Math.random() * (30-15) + 5);
         this.monsterHealth += monsterHealing;
         console.log('Monster healed for : ', monsterHealing);
+      },
+      surrender(){
+        this.playerHealth=0;
+        console.log('monster won!')
       }
     },
     computed:{
