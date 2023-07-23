@@ -18,27 +18,37 @@
         </div>
       </section>
 
-      <p v-if="this.monsterHealth>this.playerHealth">Monster is Leading</p>
-      <p v-else-if="this.monsterHealth === this.playerHealth">Start!</p>
-      <p v-else>Player is leading!</p>
+<!--      <p v-if="this.monsterHealth>this.playerHealth">Monster is Leading</p>-->
+<!--      <p v-else-if="this.monsterHealth === this.playerHealth">Start!</p>-->
+<!--      <p v-else>Player is leading!</p>-->
+       <section class="container" v-if="winner && gameOver===true">
+         <h2>Game Over!</h2>
+         <h3 v-if="winner==='player'">Player Won!</h3>
+         <h3 v-if="winner==='monster'">Monster Won!</h3>
+         <h3 v-if="winner==='draw'">It's a Draw!</h3>
+           <button @click="setNewGame">Play New Game!</button>
+       </section>
 
-      <section id="controls">
-        <button v-on:click="humanAttacking()">ATTACK</button>
-        <button v-on:click="specialAttack()">SPECIAL ATTACK</button>
-        <button v-on:click="playerHealing()">HEAL</button>
-        <button v-on:click="surrender()">SURRENDER</button>
-      </section>
+<!--      Remove All of the buttons if the player Surrenders-->
+<!--      Remove all of the buttons if it's game over.-->
+
+      <div v-if="playerSurrendered ===false && winner==null">
+        <section id="controls">
+          <button v-on:click="humanAttacking()">ATTACK</button>
+          <!--ostatokot.-->
+          <button :disabled="currentRound %3 !==0" v-on:click="specialAttack()" class="disabled  ">SPECIAL ATTACK</button>
+          <button v-on:click="playerHealing()">HEAL</button>
+          <button v-on:click="playerSurrenders()">SURRENDER</button>
+        </section>
+      </div>
       <section id="log" class="container">
         <h2>Battle Log</h2>
         <div v-for="monsterAttack in monsterAttacks" v-bind:key="monsterAttack">
           <div v-for="playerAttack in playerAttacks" v-bind:key="playerAttack">
-            <div v-for="specialAttack in specialAttacks" v-bind:key="specialAttack">
               <ul>
                 <li>Monster Attacks for : {{monsterAttack}} Hits!</li>
                 <li>Player Attacks for : {{playerAttack}} Hits!</li>
-                <li>Special Attacks for : <span style="color:red;">{{specialAttack}}</span> Hits!</li>
               </ul>
-            </div>
         </div>
         </div>
       </section>
@@ -47,7 +57,7 @@
   </template>
 
   <script>
-
+``
   export default{
     data(){
       return{
@@ -56,19 +66,26 @@
         playerAttacks:[],
         monsterHealth:100,
         playerHealth:100,
-        usesSpecialAttack:false,
+        playerSurrendered:false,
+        surrender:'',
+        currentRound:0,
+        newGame:false,
+        winner:null,
+        gameOver:false,
       }
     },
     methods:{
       humanAttacking(){
       let AttackValue =  Math.floor(Math.random() * (12-5)) + 5;
+      this.currentRound++;
         console.log('Human Attacks For : ', AttackValue)
       this.monsterHealth = this.monsterHealth- AttackValue;
         this.playerAttacks.push(AttackValue);
       this.monsterAttacking();
       },
       specialAttack(){
-        this.usesSpecialAttack=true;
+        this.currentRound++;
+
         let specialAttack = Math.floor(Math.random() * (20-10) + 10);
         console.log('Human Attacks For : ', specialAttack)
        this.specialAttacks.push(specialAttack);
@@ -81,10 +98,22 @@
         this.monsterAttacks.push(AttackValue);
         this.playerHealth = this.playerHealth- AttackValue;
       },
+      setNewGame(){
+      this.newGame=true;
+      this.specialAttacks = [];
+      this.monsterAttacks= [];
+      this.playerAttacks= [];
+      this.playerHealth = 100;
+      this.monsterHealth = 100;
+      this.playerSurrendered=false;
+      this.currentRound= 0;
+      this.winner=null;
+      },
       playerHealing(){
+        this.currentRound++;
         let Healing = Math.floor(Math.random() * (20 -10) + 5);
         this.playerHealth +=Healing;
-        if(this.playerHealth>=100){
+        if(this.playerHealth>100){
           this.playerHealth=100;
         }
         console.log('Player healed for  : ' , Healing);
@@ -96,11 +125,15 @@
         if(this.monsterHealth >=100){
           this.monsterHealth=100;
         }
+        if(this.monsterHealth>100){
+          //Display a message here that he cant heal more than 100 hp.
+        }
         console.log('Monster healed for : ', monsterHealing);
       },
-      surrender(){
+      playerSurrenders(){
+        this.playerSurrendered=true;
         this.playerHealth=0;
-        console.log('monster won!')
+        return 'Monster wins!'
       }
     },
     computed:{
@@ -112,15 +145,36 @@
       }
     },
     watch:{
-      monsterHealth(){
-        if(this.monsterHealth<=0){
-          return 'Monster is dead.'
+     playerHealth(value){
+        if(value<=0 && this.monsterHealth<=0){
+          //Draw
+          this.winner='draw'
+          this.gameOver=true;
+
+          // this.playerHealth=0;
+          // this.monsterHealth=0;
         }
-        else{
-          return 'Monster is alive.'
+        else if(value<=0){
+          //Player lost
+          this.winner='monster'
+          this.gameOver=true;
+          // this.playerHealth=0;
         }
+      },
+      monsterHealth(value){
+      if(value<0 && this.playerHealth<=0){
+       this.winner='draw'
+        this.gameOver=true;
+       // this.playerHealth=0;
+       // this.monsterHealth=0;
+      }
+      else if(value<=0){
+        this.winner='player'
+        this.gameOver=true;
+        this.monsterHealth=0;
       }
     }
+   }
 
   }
 
