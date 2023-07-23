@@ -30,7 +30,7 @@
 
     <section id="controls" v-if="!playerSurrenders && !gameOver">
       <button @click="playerAttack()">ATTACK</button>
-      <button v-on:click="playerSpecialAttack()">SPECIAL ATTACK</button>
+      <button :disabled="currentRound % 3 !==0" v-on:click="playerSpecialAttack()">SPECIAL ATTACK</button>
       <button @click="playerHealing1()">HEAL</button>
       <button @click="playerSurrender()">SURRENDER</button>
     </section>
@@ -68,10 +68,12 @@ export default {
       playerSurrenders:false,
       gameOver:false,
       winner:null,
+      currentRound:0,
     }
   },
   methods:{
     playerAttack(){
+      this.currentRound++;
       //Random Values
       let attack = Math.floor(Math.random() * (10-5) +5);
       console.log("Player Attacked!", attack)
@@ -80,6 +82,7 @@ export default {
       this.monsterAttack();
     },
     playerSpecialAttack(){
+      this.currentRound++;
       let specialAttack = Math.floor(Math.random()  * (15-5) + 5);
       console.log("Special Attack has been used. " ,  specialAttack);
       this.monsterHealth = this.monsterHealth - specialAttack;
@@ -93,6 +96,7 @@ export default {
       this.battleLogs.push({type:'monsterAttacking', value:attack})
     },
     playerHealing1(){
+      this.currentRound++;
       let healing = Math.floor(Math.random() * (13-4) + 4 );
       this.playerHealth +=healing;
       if(this.playerHealth>100){
