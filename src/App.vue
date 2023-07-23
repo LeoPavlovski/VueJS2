@@ -8,7 +8,8 @@
 <!--    <assignment-five></assignment-five>-->
 <!--    <assignment-six></assignment-six>-->
 <!--    <assignment-seven></assignment-seven>-->
-<assignment-eight></assignment-eight>
+<assignment-nine></assignment-nine>
+
   </div>
 </template>
 
@@ -20,7 +21,8 @@
 // import AssignmentFive from "@/components/Assignments/AssignmentFive.vue"
 // import AssignmentSix from "@/components/Assignments/AssignmentSix.vue"
 //  import AssignmentSeven from "@/components/Assignments/AssignmentSeven.vue"
-import AssignmentEight from "@/components/Assignments/AssignmentEight.vue"
+// import AssignmentEight from "@/components/Assignments/AssignmentEight.vue"
+import AssignmentNine from "@/components/Assignments/AssignmentNine.vue"
 export default {
   name: 'App',
   components: {
@@ -30,7 +32,7 @@ export default {
     // AssignmentFour
     // AssignmentFive
     // AssignmentSix
-    AssignmentEight
+    AssignmentNine
   }
 }
 </script>
