@@ -43,14 +43,19 @@
       </div>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <div v-for="monsterAttack in monsterAttacks" v-bind:key="monsterAttack">
-          <div v-for="playerAttack in playerAttacks" v-bind:key="playerAttack">
-              <ul>
-                <li>Monster Attacks for : {{monsterAttack}} Hits!</li>
-                <li>Player Attacks for : {{playerAttack}} Hits!</li>
-              </ul>
+        <div v-for="(log, index) in battleLogs" v-bind:key="index">
+          <ul v-if="log.type === 'attack'">
+            <li>Monster Attacks for: {{ log.value }} Hits!</li>
+            <li>Player Attacks for: {{ log.value }} Hits!</li>
+          </ul>
+          <ul v-else-if="log.type === 'heal'">
+            <li class="log--heal">Healing Status: {{ log.value > 100 ? 'Full Health' : `${log.value} Points` }}</li>
+          </ul>
+          <ul v-else-if="log.type === 'specialAttack'">
+            <li class="log--damage">Player used Special Attack! <span>{{ log.value }}</span></li>
+          </ul>
         </div>
-        </div>
+        <h3 v-if="playerSurrendered">Player has Surrendered! Monster WON!</h3>
       </section>
     </div>
   </div>
@@ -64,6 +69,8 @@
         specialAttacks:[],
         monsterAttacks:[],
         playerAttacks:[],
+        playerHeals:[],
+        battleLogs:[],
         monsterHealth:100,
         playerHealth:100,
         playerSurrendered:false,
@@ -80,41 +87,47 @@
       this.currentRound++;
         console.log('Human Attacks For : ', AttackValue)
       this.monsterHealth = this.monsterHealth- AttackValue;
-        this.playerAttacks.push(AttackValue);
+        this.battleLogs.push({type:'attack',value:AttackValue})
       this.monsterAttacking();
       },
       specialAttack(){
         this.currentRound++;
-
         let specialAttack = Math.floor(Math.random() * (20-10) + 10);
         console.log('Human Attacks For : ', specialAttack)
-       this.specialAttacks.push(specialAttack);
+        this.battleLogs.push({type:'specialAttack',value:specialAttack})
         this.monsterHealth = this.monsterHealth- specialAttack;
         this.monsterAttacking();
       },
       monsterAttacking(){
         let AttackValue = Math.floor(Math.random()* (15-8) + 5);
         console.log('Monster Attacks for : ', AttackValue)
-        this.monsterAttacks.push(AttackValue);
+        // this.battleLogs.push({type:'specialAttack',value:AttackValue})
         this.playerHealth = this.playerHealth- AttackValue;
       },
       setNewGame(){
       this.newGame=true;
       this.specialAttacks = [];
+      this.playerHeals=[];
       this.monsterAttacks= [];
       this.playerAttacks= [];
       this.playerHealth = 100;
       this.monsterHealth = 100;
       this.playerSurrendered=false;
       this.currentRound= 0;
+      this.battleLogs=[];
       this.winner=null;
       },
       playerHealing(){
         this.currentRound++;
         let Healing = Math.floor(Math.random() * (20 -10) + 5);
         this.playerHealth +=Healing;
+        //Performing the heal ( so we can display it in the battle log).
+       this.battleLogs.push({type:'heal',value:Healing})
         if(this.playerHealth>100){
           this.playerHealth=100;
+        }
+        if(this.playerHeals.values()>100){
+          this.playerHeals.values()
         }
         console.log('Player healed for  : ' , Healing);
         this.monsterHealing()
