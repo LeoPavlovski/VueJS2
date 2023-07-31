@@ -1,27 +1,13 @@
 <template>
-  <section>
-    <header>
-      <h1>FriendList</h1>
-    </header>
-    <section id="app">
-      <ul v-for="(friend) in friends" v-bind:key="friend.id">
-        <li>
-          <h2>{{friend.name}}</h2>
-          <button @click="toggleDetails">{{details? 'Hide Details' : 'Show Details'}}</button>
-          <ul v-if="details">
-            <li><strong>Phone:</strong>{{friend.phone}}</li>
-            <li><strong>Email:</strong> {{friend.email}}</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-
-  </section>
-
+  <friend-component></friend-component>
 </template>
 
 <script>
+import friendComponent from "@/components/friendComponent.vue";
 export default{
+  components:{
+    friendComponent
+  },
   data(){
     return{
       details:false,
@@ -47,8 +33,8 @@ export default{
     }
   },
 }
-</script>
 
+</script>
 <style>
 * {
   box-sizing: border-box;
@@ -115,3 +101,5 @@ header {
 }
 
 </style>
+
+
