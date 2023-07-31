@@ -75,7 +75,7 @@ export default {
     playerAttack(){
       this.currentRound++;
       //Random Values
-      let attack = Math.floor(Math.random() * (10-5) +5);
+      let attack = Math.floor(Math.random() * (15-10) +10);
       console.log("Player Attacked!", attack)
       this.monsterHealth= this.monsterHealth- attack;
       this.battleLogs.push({type:'attack', value:attack})
@@ -83,14 +83,14 @@ export default {
     },
     playerSpecialAttack(){
       this.currentRound++;
-      let specialAttack = Math.floor(Math.random()  * (15-5) + 5);
+      let specialAttack = Math.floor(Math.random()  * (20-15) + 15);
       console.log("Special Attack has been used. " ,  specialAttack);
       this.monsterHealth = this.monsterHealth - specialAttack;
       this.battleLogs.push({type:'specialAttack', value:specialAttack})
       this.monsterAttack();
     },
     monsterAttack(){
-      let attack = Math.floor(Math.random() * (13-4) + 4);
+      let attack = Math.floor(Math.random() * (18-10) + 10);
       console.log("Monster Performed an attack" , attack);
       this.playerHealth = this.playerHealth - attack;
       this.battleLogs.push({type:'monsterAttacking', value:attack})
@@ -106,7 +106,7 @@ export default {
       this.monsterHealing();
     },
     monsterHealing(){
-      let healing = Math.floor(Math.random() * (13-4) + 4 );
+      let healing = Math.floor(Math.random() * (17-4) + 4 );
       this.monsterHealth +=healing;
       if(this.monsterHealth>100){
         this.monsterHealth= 100;
