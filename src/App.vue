@@ -10,7 +10,6 @@
 <!--    <assignment-seven></assignment-seven>-->
 <!--<assignment-nine></assignment-nine>-->
     <assignment-ten></assignment-ten>
-
   </div>
 </template>
 
@@ -25,6 +24,7 @@
 // import AssignmentEight from "@/components/Assignments/AssignmentEight.vue"
 // import AssignmentNine from "@/components/Assignments/AssignmentNine.vue"
 import AssignmentTen from "@/components/Assignments/AssignmentTen.vue";
+
 // import AssignmentNine from "@/components/Assignments/AssignmentNine.vue";
 //   import AssignmentTen from "@/components/Assignments/AssignmentTen.vue"
   export default {
@@ -37,7 +37,7 @@ import AssignmentTen from "@/components/Assignments/AssignmentTen.vue";
     // AssignmentFive
     // AssignmentSix
     //   AssignmentNine
-      AssignmentTen
+      AssignmentTen,
   }
 }
 </script>
