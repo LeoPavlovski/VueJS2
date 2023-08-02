@@ -5,7 +5,8 @@
     </header>
     <section id="app">
         <div>
-          <h2>{{name}}</h2>
+          <h2>{{name}} {{friendIsFavorite==="1" ? '(Favorite)' : 'Not Favorite'}}</h2>
+          <button @click="toggleFavorite">Toggle Favorite</button>
           <button @click="IsVisibleMethod">{{isVisible? 'Hide Details' : 'Show Details'}}</button>
           <ul v-if="isVisible">
             <li><strong>Phone:</strong>{{phoneNumber}}</li>
@@ -23,6 +24,7 @@ export default{
       'name',
       'phoneNumber',
       'emailAddress',
+      'isFavorite',
   ],
   data(){
     return{
@@ -37,6 +39,7 @@ export default{
          },
 
       isVisible:false,
+      friendIsFavorite:this.isFavorite,
     }
   },
   methods:{
@@ -44,6 +47,15 @@ export default{
     IsVisibleMethod(){
       this.isVisible = !this.isVisible;
     },
+    // Mutation of the prop is not good.
+    toggleFavorite() {
+      if(this.friendIsFavorite === "1"){
+        this.friendIsFavorite = "0"
+      }
+      else if(this.friendIsFavorite === "0"){
+        this.friendIsFavorite = "1"
+      }
+    }
   },
 }
 </script>
