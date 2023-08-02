@@ -1,5 +1,12 @@
 <template>
-  <friend-component></friend-component>
+  <div>
+<!--    This is important because here we are pasing the data to the component. Each individual componnet is going to have different data.-->
+    <friend-component name="Leo" phone-number="078238839" email-address="TestEmail.com"></friend-component>
+    <friend-component name="Michael" phone-number="32345463" email-address="Emailing.com"></friend-component>
+<!--    Added additional component.-->
+    <friend-component name="Test" phone-number="1231" email-address="Testing.com"></friend-component>
+  </div>
+
 </template>
 
 <script>
@@ -7,30 +14,6 @@ import friendComponent from "@/components/friendComponent.vue";
 export default{
   components:{
     friendComponent
-  },
-  data(){
-    return{
-      details:false,
-      friends:[
-        {
-          'id':'Manuel',
-          'name':'Manuel Lorenz',
-          'phone':'01234 5678 991',
-          'email':'manuel@localhost.com'
-        },
-        {
-          'id':'Julie',
-          'name':'Julie Jones',
-          'phone':'09876 543 221',
-          'email':'julie@localhost.com'
-        }
-      ]
-    }
-  },
-  methods:{
-    toggleDetails(){
-      this.details = !this.details;
-    }
   },
 }
 
