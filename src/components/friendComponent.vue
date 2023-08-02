@@ -5,7 +5,7 @@
     </header>
     <section id="app">
         <div>
-          <h2>{{name}} {{friendIsFavorite==="1" ? '(Favorite)' : 'Not Favorite'}}</h2>
+          <h2>{{name}} {{friendIsFavorite===true ? '(Favorite)' : 'Not Favorite'}}</h2>
           <button @click="toggleFavorite">Toggle Favorite</button>
           <button @click="IsVisibleMethod">{{isVisible? 'Hide Details' : 'Show Details'}}</button>
           <ul v-if="isVisible">
@@ -40,11 +40,11 @@ export default{
       required:true,
     },
     isFavorite:{
-      type:String,
+      type:Boolean,
       required:false,
-      default:"0",
+      default:false,
       validator:function(value){
-        return value === "1" || value ==="2"
+       return value ===false || value === true
       }
     },
   },
@@ -52,14 +52,6 @@ export default{
     return{
       //Return the friend data.
       //TODO in this case we are not using the friends array but we are sending different data based on the props.
-      friend:
-         {
-          'id':'Manuel',
-          'name':'Manuel Lorenz',
-          'phone':'01234 5678 991',
-          'email':'manuel@localhost.com'
-         },
-
       isVisible:false,
       friendIsFavorite:this.isFavorite,
     }
@@ -71,12 +63,7 @@ export default{
     },
     // Mutation of the prop is not good.
     toggleFavorite() {
-      if(this.friendIsFavorite === "1"){
-        this.friendIsFavorite = "0"
-      }
-      else if(this.friendIsFavorite === "0"){
-        this.friendIsFavorite = "1"
-      }
+     this.friendIsFavorite = !this.friendIsFavorite
     }
   },
 }
