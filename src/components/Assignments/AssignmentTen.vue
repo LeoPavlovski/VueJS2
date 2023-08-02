@@ -1,7 +1,7 @@
 <template>
   <div>
 <!--    This is important because here we are pasing the data to the component. Each individual componnet is going to have different data.-->
-    <friend-component name="michael" email-address="test123@gmail.com" phone-number="1234123" is-favorite="1"></friend-component>
+    <friend-component name="michael" phone-number="1234123" email-address="test123@gmail.com"></friend-component>
     <friend-component name="michael" email-address="test123@gmail.com" phone-number="1234123" is-favorite="0"></friend-component>
     <friend-component name="leo" email-address="test123@gmail.com" phone-number="1234123"></friend-component>
 
