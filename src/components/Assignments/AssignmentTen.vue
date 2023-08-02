@@ -1,10 +1,11 @@
 <template>
   <div>
 <!--    This is important because here we are pasing the data to the component. Each individual componnet is going to have different data.-->
-    <friend-component name="Leo" phone-number="078238839" email-address="TestEmail.com"></friend-component>
-    <friend-component name="Michael" phone-number="32345463" email-address="Emailing.com"></friend-component>
-<!--    Added additional component.-->
-    <friend-component name="Test" phone-number="1231" email-address="Testing.com"></friend-component>
+    <friend-component name="michael" email-address="test123@gmail.com" phone-number="1234123"></friend-component>
+    <friend-component name="michael" email-address="test123@gmail.com" phone-number="1234123"></friend-component>
+    <friend-component name="leo" email-address="test123@gmail.com" phone-number="1234123"></friend-component>
+
+    <!--    Added additional component.-->
   </div>
 
 </template>

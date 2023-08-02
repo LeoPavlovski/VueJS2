@@ -28,13 +28,13 @@ export default{
     return{
       //Return the friend data.
       //TODO in this case we are not using the friends array but we are sending different data based on the props.
-      // friend:
-      //    {
-      //     'id':'Manuel',
-      //     'name':'Manuel Lorenz',
-      //     'phone':'01234 5678 991',
-      //     'email':'manuel@localhost.com'
-      //    },
+      friend:
+         {
+          'id':'Manuel',
+          'name':'Manuel Lorenz',
+          'phone':'01234 5678 991',
+          'email':'manuel@localhost.com'
+         },
 
       isVisible:false,
     }
