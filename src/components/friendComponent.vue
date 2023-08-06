@@ -9,6 +9,7 @@
           <button @click="toggleFavorite">Toggle Favorite</button>
           <button @click="toggleName">Toggle Name</button>
           <button @click="IsVisibleMethod">{{isVisible? 'Hide Details' : 'Show Details'}}</button>
+          <button @click="deleteFriend">Delete Friend</button>
           <ul v-if="isVisible">
             <li><strong>Phone:</strong>{{phoneNumber}}</li>
             <li><strong>Email:</strong> {{emailAddress}}</li>
@@ -92,6 +93,9 @@ export default {
     toggleName() {
       const nameValue = this.$emit('toggle-name', this.id)
       console.log(nameValue);
+    },
+    deleteFriend(){
+
     }
   },
 };
