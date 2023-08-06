@@ -10,7 +10,7 @@
 <!--    <assignment-seven></assignment-seven>-->
 <!--<assignment-nine></assignment-nine>-->
 <!--    <assignment-ten></assignment-ten>-->
-    <assignment-twelve></assignment-twelve>
+  <AssignmentFifty></AssignmentFifty>
   </div>
 </template>
 
@@ -24,10 +24,11 @@
 //  import AssignmentSeven from "@/components/Assignments/AssignmentSeven.vue"
 // import AssignmentEight from "@/components/Assignments/AssignmentEight.vue"
 // import AssignmentNine from "@/components/Assignments/AssignmentNine.vue"
-import AssignmentTwelve from "@/components/Assignments/AssignmentTweleve.vue"
+// import AssignmentTwelve from "@/components/Assignments/AssignmentTweleve.vue"
 
 // import AssignmentNine from "@/components/Assignments/AssignmentNine.vue";
 //   import AssignmentTen from "@/components/Assignments/AssignmentTen.vue"
+import AssignmentFifty from "@/components/Assignments/AssignmentFifty.vue";
   export default {
     name: 'App',
     components: {
@@ -39,7 +40,7 @@ import AssignmentTwelve from "@/components/Assignments/AssignmentTweleve.vue"
     // AssignmentSix
     //   AssignmentNine
     //   AssignmentTen,
-      AssignmentTwelve
+      AssignmentFifty
   }
 }
 </script>
