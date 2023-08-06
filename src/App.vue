@@ -29,9 +29,11 @@
 // import AssignmentNine from "@/components/Assignments/AssignmentNine.vue";
 //   import AssignmentTen from "@/components/Assignments/AssignmentTen.vue"
 import AssignmentFifty from "@/components/Assignments/AssignmentFifty.vue";
+
   export default {
     name: 'App',
     components: {
+      AssignmentFifty
     // AssignmentTwo,
     // AssignmentThree,
     // ProjectFour
@@ -40,7 +42,6 @@ import AssignmentFifty from "@/components/Assignments/AssignmentFifty.vue";
     // AssignmentSix
     //   AssignmentNine
     //   AssignmentTen,
-      AssignmentFifty
   }
 }
 </script>

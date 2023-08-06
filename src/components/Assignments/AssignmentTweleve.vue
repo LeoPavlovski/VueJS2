@@ -33,7 +33,7 @@ export default{
           'color':'Black',
           'isFavorite':true,
         }
-      ]
+      ],
     }
   },
   methods:{
@@ -56,6 +56,7 @@ export default{
     deleteCar(carId){
      this.cars =this.cars.filter(car => car.id !== carId)
     }
+
   },
 }
 //The array is going to be here.

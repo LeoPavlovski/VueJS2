@@ -9,6 +9,10 @@
         <button @click="toggleFavorite">Toggle Favorite</button>
         <button @click="IsVisibleMethod">{{isVisible? 'Hide Details' : 'Show Details'}}</button>
         <button @click="deleteDevice">Delete Device</button>
+        <button @click="editDevice">Edit Device</button>
+        <div v-if="isEditing">
+        <edit-device :name="name" :color="color" :email="email" :phone="phoneNumber"></edit-device>
+        </div>
         <ul v-if="isVisible">
           <li><strong>Name:</strong>{{name}}</li>
           <li><strong>Color:</strong> {{color}}</li>
@@ -22,8 +26,11 @@
 </template>
 
 <script>
+import EditDevice from "@/components/Assignments/editDevice.vue";
+
 export default{
-  emits:['toggle-favorite','toggle-delete'],
+  components: {EditDevice},
+  emits:['toggle-favorite','toggle-delete','edit-device'],
   props:{
     id:{
       type:String,
@@ -54,6 +61,7 @@ export default{
   data(){
     return{
       isVisible:false,
+      isEditing:false,
     }
   },
   methods:{
@@ -66,7 +74,22 @@ export default{
     },
     deleteDevice(){
       this.$emit('toggle-delete',this.id)
-    }
+    },
+    //   addCar(name,color,yearProduction){
+  //   const newCar = {
+  //     id: new Date().toISOString(),
+  //     name: name,
+  //     color: color,
+  //     yearProduction: yearProduction,
+  //     isFavorite:false
+  //   }
+  //   this.cars.push(newCar);
+  // },
+    editDevice() {
+      this.isEditing = !this.isEditing;
+      const newItem = this.$emit('edit-device',this.id);
+      console.log(newItem);
+    },
   },
 }
 </script>
